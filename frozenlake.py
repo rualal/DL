@@ -94,7 +94,7 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
                     letter = desc[row, col]
                     if letter in b'G':
                         li.append((1.0, s, 0, True))
-                    if letter in b'H':
+                    elif letter in b'H':
                         li.append((1.0, s, -4, True))
                     else:
                         if is_slippery:
