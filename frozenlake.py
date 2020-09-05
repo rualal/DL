@@ -92,10 +92,8 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
                 for a in range(4):
                     li = P[s][a]
                     letter = desc[row, col]
-                    if letter in b'G':
+                    if letter in b'GH':
                         li.append((1.0, s, 0, True))
-                    elif letter in b'H':
-                        li.append((1.0, s, -4, True))
                     else:
                         if is_slippery:
                             for b in [(a-1)%4, a, (a+1)%4]:
@@ -104,7 +102,8 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
                                 newletter = desc[newrow, newcol]
                                 done = bytes(newletter) in b'GH'
                                 rew = float(newletter == b'G')
-                                r=5.0*rew-1.0
+                                h = float(newletter == b'H')
+                                r=5.0*rew-1.0-3.0*h
                                 li.append((1.0/3.0, newstate, r, done))
                         else:
                             newrow, newcol = inc(row, col, a)
@@ -112,7 +111,8 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
                             newletter = desc[newrow, newcol]
                             done = bytes(newletter) in b'GH'
                             rew = float(newletter == b'G')
-                            r=5.0*rew-1.0
+                            h = float(newletter == b'H')
+                            r=5.0*rew-1.0-3.0*h
                             li.append((1.0, newstate, r, done))
         
         # obtain one-step dynamics for dynamic programming setting
