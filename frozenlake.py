@@ -120,11 +120,11 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
                             newrow, newcol = inc(row, col, a)
                             newstate = to_s(newrow, newcol)
                             newletter = desc[newrow, newcol]
-                            s=safe(newrow, newcol) 
+                            sf=safe(newrow, newcol) 
                             done = bytes(newletter) in b'GH'
                             rew = float(newletter == b'G')
                             h = float(newletter == b'H')
-                            r=5.0*rew-1.0-10.0*h+s
+                            r=5.0*rew-1.0-10.0*h+sf
                             li.append((1.0, newstate, r, done))
         
         # obtain one-step dynamics for dynamic programming setting
