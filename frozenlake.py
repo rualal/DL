@@ -80,8 +80,8 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
             S={}
             S[0]= desc[row-1, col] if row >0 else None
             S[1]= desc[row, col-1] if col >0 else None
-            S[2]= desc[row+1, col] if row < nrow else None
-            S[3]= desc[row, col+1] if col < ncol else None
+            S[2]= desc[row+1, col] if row < 7 else None
+            S[3]= desc[row, col+1] if col < 7 else None
             for i in range(3):
                if S[i] == b'H':
                  p=p-3
