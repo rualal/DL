@@ -75,6 +75,17 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
 
         def to_s(row, col):
             return row*ncol + col
+        def safe(row, col):
+            p=0
+            S={}
+            S[0]= desc[row-1, col] if row >0 else None
+            S[1]= desc[row, col-1] if col >0 else None
+            S[2]= desc[row+1, col] if row < nrow else None
+            S[3]= desc[row, col+1] if col < ncol else None
+            for i in range(3):
+               if S[i] == b'H':
+                 p+=-3
+            return p
         def inc(row, col, a):
             if a==0: # left
                 col = max(col-1,0)
@@ -109,10 +120,11 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
                             newrow, newcol = inc(row, col, a)
                             newstate = to_s(newrow, newcol)
                             newletter = desc[newrow, newcol]
+                            s=safe(newrow, newcol) 
                             done = bytes(newletter) in b'GH'
                             rew = float(newletter == b'G')
                             h = float(newletter == b'H')
-                            r=5.0*rew-1.0-10.0*h
+                            r=5.0*rew-1.0-10.0*h+s
                             li.append((1.0, newstate, r, done))
         
         # obtain one-step dynamics for dynamic programming setting
