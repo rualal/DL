@@ -84,7 +84,7 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
             S[3]= desc[row, col+1] if col < 7 else None
             for i in range(3):
                if S[i] == b'H':
-                 p=p-3
+                 p=p-30
             return p
         def inc(row, col, a):
             if a==0: # left
