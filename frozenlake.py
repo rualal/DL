@@ -18,14 +18,14 @@ MAPS = {
         "HFFG"
     ],
     "8x8": [
-        "SFFFFFFF",
-        "FFFFFFFF",
-        "FFFHFFFF",
-        "FFFFFHFF",
-        "FFFHFFFF",
-        "FHHFFFHF",
-        "FHFFHFHF",
-        "FFFHFFFG"
+        "SFFFFHFG",
+        "FHHHFHFH",
+        "FHFFFHFH",
+        "FHFHFHFH",
+        "FHFHFHFH",
+        "FHFHFHFH",
+        "FHFHFHFH",
+        "FFFHFFFH"
     ],
 }
 
@@ -124,7 +124,7 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
                             done = bytes(newletter) in b'GH'
                             rew = float(newletter == b'G')
                             h = float(newletter == b'H')
-                            r=10.0*rew-1.0-100.0*h+sf
+                            r=10.0*rew-1.0-100.0*h
                             li.append((1.0, newstate, r, done))
         
         # obtain one-step dynamics for dynamic programming setting
