@@ -49,7 +49,7 @@ class Play:
         self.ax.set_ylim([-.5,h-.5])
         self.ax.set_xticks(np.arange(0, w, 1))
         self.ax.set_yticks(np.arange(0, h, 1))
-        self.ax.set_aspect('equal')
+        self.ax.set_aspect('equal');
     
         for loc in ['top', 'right', 'bottom', 'left']:
             self.ax.spines[loc].set_visible(False)
