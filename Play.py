@@ -39,7 +39,7 @@ class Play:
         else:
             self.fig.subplots_adjust(.1,.1,1,1)
             
-        self.fig.show();
+        self.fig.show()
         w,h=self.game.size
         self.ax=self.fig.gca()
         self.ax.grid()
@@ -70,7 +70,7 @@ class Play:
 
             self.draw_move(loc)
             
-        self.click_cid=self.fig.canvas.mpl_connect('button_press_event', self.click)
+        self.click_cid=self.fig.canvas.mpl_connect('button_press_event', self.click);
 
             
     def move_generator(self):
