@@ -100,7 +100,7 @@ class Play:
         self.ax.scatter(i,j,s=500,marker='o',zorder=3, c=c)
         score = self.game.score
         self.draw_winner(score)
-        self.fig.canvas.draw()
+        self.fig.canvas.draw();
 
 
     def draw_winner(self, score):
