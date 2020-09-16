@@ -39,7 +39,7 @@ class Play:
         else:
             self.fig.subplots_adjust(.1,.1,1,1)
             
-        self.fig.show()
+        self.fig.show();
         w,h=self.game.size
         self.ax=self.fig.gca()
         self.ax.grid()
