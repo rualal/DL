@@ -124,9 +124,9 @@ class TicTacToeGame(Game):
                     player_a_count += 1
                 elif self.state[x][y] == player_b:
                     player_b_count += 1
-            if player_a_count == self.row:
+            if player_a_count == self.row-2:
                 return True, 1
-            elif player_b_count == self.row:
+            elif player_b_count == self.row-2:
                 return True, -1
 
         # Check for vertical marks
@@ -138,9 +138,9 @@ class TicTacToeGame(Game):
                     player_a_count += 1
                 elif self.state[y][x] == player_b:
                     player_b_count += 1
-            if player_a_count == self.row:
+            if player_a_count == self.row-2:
                 return True, 1
-            elif player_b_count == self.row:
+            elif player_b_count == self.row-2:
                 return True, -1
 
         # Check for major diagonal marks
@@ -152,7 +152,7 @@ class TicTacToeGame(Game):
             elif self.state[x][x] == player_b:
                 player_b_count += 1
 
-        if player_a_count == self.rowrow-2:
+        if player_a_count == self.row-2:
             return True, 1
         elif player_b_count == self.row-2:
             return True, -1
